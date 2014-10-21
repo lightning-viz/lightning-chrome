@@ -8,6 +8,12 @@ chrome.storage.sync.get({
     host = items.host;
 });
 
+chrome.storage.onChanged.addListener(function(changes, name) {
+    if(changes.host) {
+        host = changes.host;
+    }
+});
+
 var formatUrl = function(gitUrl, path) {
     var url = 'http://' + host + '/visualization-types/preview/?url=' + gitUrl;
     if(path) {
