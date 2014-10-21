@@ -10,11 +10,12 @@ chrome.storage.sync.get({
 
 chrome.storage.onChanged.addListener(function(changes, name) {
     if(changes.host) {
-        host = changes.host;
+        host = changes.host.newValue;
     }
 });
 
 var formatUrl = function(gitUrl, path) {
+
     var url = 'http://' + host + '/visualization-types/preview/?url=' + gitUrl;
     if(path) {
         url += '&path=' + path;
